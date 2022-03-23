@@ -18,6 +18,8 @@ namespace SavasOyunu.Desktop
         public AnaForm()
         {
             InitializeComponent();
+
+            _oyun.GecenSureDegisti += Oyun_GecenSureDegisti;
         }
 
         private void AnaForm_KeyDown(object sender, KeyEventArgs e)
@@ -36,7 +38,12 @@ namespace SavasOyunu.Desktop
                 case Keys.Space:
                     _oyun.AtesEt();
                     break;
-            }
+            }    
+        }
+
+        private void Oyun_GecenSureDegisti(object sender, EventArgs e)
+        {
+            sureLabel.Text = _oyun.GecenSure.ToString(@"m\:ss");
         }
     }
 }

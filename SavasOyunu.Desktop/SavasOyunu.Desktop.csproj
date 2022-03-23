@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <Content Include="Icons8-Ios7-Military-Fighter-Jet.ico" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SavasOyunu.Library\SavasOyunu.Library.csproj">

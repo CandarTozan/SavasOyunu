@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SavasOyunu.Library.Enum;
 using SavasOyunu.Library.Interface;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace SavasOyunu.Library.Concrete
 {
@@ -15,6 +12,7 @@ namespace SavasOyunu.Library.Concrete
 
         private Timer _gecenSureTimer = new Timer { Interval = 1000 };
         private TimeSpan _gecenSure;
+        private readonly Panel _ucaksavarPanel;
 
         #endregion
 
@@ -43,8 +41,9 @@ namespace SavasOyunu.Library.Concrete
 
         #region Metotlar
 
-        public Oyun()
+        public Oyun( Panel ucaksavarPanel)
         {
+            _ucaksavarPanel = ucaksavarPanel;
             _gecenSureTimer.Tick += GecenSureTimer_Tick;
         }
 
@@ -61,10 +60,20 @@ namespace SavasOyunu.Library.Concrete
         public void Baslat()
         {
             if (DevamEdiyorMu) return;
-            
+
             DevamEdiyorMu = true;
             _gecenSureTimer.Start();
-                        
+
+            UcaksavarOlustur();    
+        }
+
+        private void UcaksavarOlustur()
+        {
+            var ucaksavar = new Ucaksavar(_ucaksavarPanel.Width)
+            {
+                Image = Image.FromFile(@"Gorseller\Ucaksavar.png") 
+            };
+            _ucaksavarPanel.Controls.Add(ucaksavar);
         }
 
         private void Bitir()

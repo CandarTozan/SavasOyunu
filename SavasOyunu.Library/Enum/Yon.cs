@@ -3,8 +3,8 @@
     public enum Yon
     {
         Yukari,
-        Asagi,
         Saga,
+        Asagi,
         Sola
     }
 }

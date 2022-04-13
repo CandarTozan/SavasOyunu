@@ -13,6 +13,7 @@ namespace SavasOyunu.Library.Concrete
         private Timer _gecenSureTimer = new Timer { Interval = 1000 };
         private TimeSpan _gecenSure;
         private readonly Panel _ucaksavarPanel;
+        private Ucaksavar _ucaksavar;
 
         #endregion
 
@@ -69,11 +70,8 @@ namespace SavasOyunu.Library.Concrete
 
         private void UcaksavarOlustur()
         {
-            var ucaksavar = new Ucaksavar(_ucaksavarPanel.Width)
-            {
-                Image = Image.FromFile(@"Gorseller\Ucaksavar.png") 
-            };
-            _ucaksavarPanel.Controls.Add(ucaksavar);
+            _ucaksavar = new Ucaksavar(_ucaksavarPanel.Width, _ucaksavarPanel.Size);
+            _ucaksavarPanel.Controls.Add(_ucaksavar);
         }
 
         private void Bitir()
@@ -86,7 +84,8 @@ namespace SavasOyunu.Library.Concrete
 
         public void UcaksavariHareketEttir(Yon yon)
         {
-            throw new NotImplementedException();
+            if (!DevamEdiyorMu) return;
+            _ucaksavar.HareketEttir(yon);
         }
 
         #endregion

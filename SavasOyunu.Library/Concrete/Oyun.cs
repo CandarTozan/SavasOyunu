@@ -66,7 +66,7 @@ namespace SavasOyunu.Library.Concrete
         {
             MermileriHareketEttir();
             UcaklariHareketEttir();
-            VurulanUcaklariCikar();
+            VurulanUcaklariCikar(); 
         }
 
         private void VurulanUcaklariCikar()
